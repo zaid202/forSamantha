@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise for My Love</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            text-align: center;
+            background: linear-gradient(to bottom, #ffe6f2, #ffccf2);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff1493;
+            text-shadow: 2px 2px #ff85c2;
+            margin-bottom: 20px;
+        }
+        .name-button {
+            color: #fff;
+            background: radial-gradient(circle, #ff69b4, #ff1493);
+            border: none;
+            padding: 15px 30px;
+            font-size: 2em;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0px 5px 15px rgba(255, 20, 147, 0.6);
+        }
+        .name-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 8px 20px rgba(255, 20, 147, 0.8);
+        }
+        .message {
+            display: none;
+            margin-top: 30px;
+            font-size: 1.5em;
+            color: #8b008b;
+            text-shadow: 1px 1px #ffccf2;
+            animation: fadeIn 2s;
+        }
+        .box {
+            display: inline-block;
+            margin: 15px;
+            padding: 20px;
+            background-color: #fff;
+            color: #ff69b4;
+            font-size: 1em;
+            font-weight: bold;
+            border: 2px solid #ff69b4;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .box:hover {
+            transform: scale(1.1);
+            background-color: #ff85c2;
+            color: #fff;
+        }
+        .floating-hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+        }
+        .heart {
+            width: 20px;
+            height: 20px;
+            background: pink;
+            position: absolute;
+            animation: float 6s infinite;
+            transform: rotate(45deg);
+            border-radius: 50% 50% 0 0;
+        }
+        .heart:after, .heart:before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            background: pink;
+            position: absolute;
+            top: -10px;
+            left: 0;
+            border-radius: 50%;
+        }
+        .heart:before {
+            left: -10px;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(45deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts">
+        <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
+        <div class="heart" style="left: 50%; animation-delay: 2s;"></div>
+        <div class="heart" style="left: 70%; animation-delay: 4s;"></div>
+        <div class="heart" style="left: 30%; animation-delay: 1s;"></div>
+        <div class="heart" style="left: 80%; animation-delay: 3s;"></div>
+    </div>
+
+    <h1 id="title">My Dearest Samantha</h1>
+    <button class="name-button" id="revealButton">Click Me</button>
+    <p class="message" id="loveMessage">Dear Samantha,
+        <br><br>
+        I just want you to know how much you mean to me. You light up my life in ways words can barely describe. Every moment with you feels like a dream come true, and I am so grateful to have you by my side. You are my everything, and I love you more than you could ever imagine.
+        <br><br>
+        Always and forever,
+        <br>
+        Zaid
+    </p>
+
+    <div id="boxes" class="message">
+        <div class="box" onclick="alert('I can\'t wait to spend my life with you')">Message 1</div>
+        <div class="box" onclick="alert('I can\'t wait to share a house with you')">Message 2</div>
+        <div class="box" onclick="alert('I can\'t wait to raise a family with you, my dear')">Message 3</div>
+    </div>
+
+    <script>
+        document.getElementById('revealButton').addEventListener('click', function() {
+            document.getElementById('loveMessage').style.display = 'block';
+            document.getElementById('boxes').style.display = 'block';
+            this.style.display = 'none';
+        });
+
+        // Create hearts dynamically
+        const heartContainer = document.querySelector('.floating-hearts');
+        for (let i = 0; i < 20; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+            heartContainer.appendChild(heart);
+        }
+    </script>
+</body>
+</html>
